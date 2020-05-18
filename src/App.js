@@ -4,10 +4,10 @@ import './App.css';
 
 class App extends Component
 {
-constructor()
+constructor(props)
 {
 
-super();
+super(props);
 this.state = {
  monsters:[
 
