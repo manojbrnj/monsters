@@ -27,7 +27,7 @@ render(){
  
   return <div className='App'>
     {
-    this.state.monsters.map( item => (<h2 key={item.id}>{item.name}</h2>) )
+    this.state.monsters.map( item => (<h2 key={item.id}>{item.email}</h2>) )
     }
   </div>
 
