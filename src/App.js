@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Card from './Components/CardList/Card/Card';
+import CardList from './Components/CardList/Card/CardList';
 
 class App extends Component
 {
@@ -12,7 +14,8 @@ this.state = {
  monsters:[
 
 
- ]
+ ],
+ searchText:''
 };
 
 }
@@ -24,11 +27,20 @@ fetch('https://jsonplaceholder.typicode.com/users').then(response=>response.json
 
 
 render(){
+  const {monsters,searchText} = this.state;
+  const filterMonster = monsters.filter(monster=>
+    monster.name.toLowerCase().includes(searchText.toLocaleLowerCase())
+  )
  
+const  searchMonsters=(e)=>{this.setState({searchText:e.target.value});}
+
+
+
   return <div className='App'>
-    {
-    this.state.monsters.map( item => (<h2 key={item.id}>{item.email}</h2>) )
-    }
+  <h1 className='heading'>MosterWorld</h1>
+    <input type="text" name="search"  placeholder='search monsters' className='inptSearch' value = {this.state.searchText} onChange={searchMonsters} />
+  <CardList monsters={filterMonster}></CardList>
+   
   </div>
 
 
